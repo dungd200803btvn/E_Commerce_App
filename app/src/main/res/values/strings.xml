@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">E-Commerce</string>
+    <string name="loading">Loading details...</string>
+    <string name="addtocart">Add to Cart</string>
+</resources>
