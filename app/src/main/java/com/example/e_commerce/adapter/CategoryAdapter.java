@@ -2,6 +2,7 @@ package com.example.e_commerce.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHoder holder, int position) {
       Category category = categories.get(position);
-      holder.binding.productDescription.setText(category.getName());
+      holder.binding.productDescription.setText(Html.fromHtml(category.getName()));
         Glide.with(context).load(category.getIcon()).into(holder.binding.productImage);
         holder.binding.productImage.setBackgroundColor(Color.parseColor(category.getColor()));
 
