@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +16,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.PaymentActivity"
+            android:exported="false"
+            android:label="Payment"
+            android:theme="@style/Theme.ECommerce.DarkActionBar"/>
+        <activity
+            android:name=".activity.CheckoutActivity"
+            android:exported="false"
+            android:label="Check out"
+            android:theme="@style/Theme.ECommerce.DarkActionBar" />
+        <activity
             android:name=".activity.CartActivity"
             android:exported="false"
             android:label="Shoping Cart"
-            android:theme="@style/Theme.ECommerce.DarkActionBar"/>
+            android:theme="@style/Theme.ECommerce.DarkActionBar" />
         <activity
             android:name=".activity.ProductDetailActivity"
             android:exported="false"

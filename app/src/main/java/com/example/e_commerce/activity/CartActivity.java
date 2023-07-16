@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.e_commerce.adapter.CartAdapter;
 import com.example.e_commerce.databinding.ActivityCartBinding;
@@ -47,6 +49,15 @@ ArrayList<Product> products;
         binding.cartlist.addItemDecoration(itemDecoration);
         binding.cartlist.setAdapter(cartAdapter);
         binding.subtotal.setText(String.format("PKR : %.2f",cart.getTotalPrice()));
+        // add continue button handler
+        binding.continuebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CartActivity.this, CheckoutActivity.class));
+            }
+        });
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
