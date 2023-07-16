@@ -39,18 +39,25 @@ ArrayList<Product> products;
         initslider();
 
     }
-
+    void initproducts(){
+        products = new ArrayList<>();
+        productAdapter = new ProductAdapter(this,products);
+        // products.add(new Product("Smart Watch","https://tutorials.mianasad.com/ecommerce/uploads/product/1689300402128.jpg","READY STOCK",2400,0,10,1));
+        //  products.add(new Product("T-Shirt","https://www.pngegg.com/en/png-zqqft","READY STOCK",
+        //    100,1,100,2));
+        getRecentProducts();
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+        binding.productlist.setLayoutManager(layoutManager);
+        binding.productlist.setAdapter(productAdapter);
+    }
     private void initslider() {
-
-     //   binding.carousel.addData(new CarouselItem("https://tutorials.mianasad.com/ecommerce/uploads/news/50%20off.png","Some caption here"));
         getRecentOffer();
     }
-
     void initcategories(){
         categories = new ArrayList<>();
         categoryAdapter = new CategoryAdapter(this,categories);
-        //getCategories();
-        categories.add(new Category("Clothes","https://tutorials.mianasad.com/ecommerce/uploads/category/1689314293067.png","#4db151","color and beautiful",1));
+        getCategories();
+      //  categories.add(new Category("Clothes","https://tutorials.mianasad.com/ecommerce/uploads/category/1689314293067.png","#4db151","color and beautiful",1));
         GridLayoutManager layoutManager = new GridLayoutManager(this,4);
         binding.categoriesList.setLayoutManager(layoutManager);
         binding.categoriesList.setAdapter(categoryAdapter);
@@ -86,54 +93,38 @@ ArrayList<Product> products;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
 queue.add(stringRequest);
     }
-    void getRecentProducts(){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = Constants.GET_PRODUCTS_URL+"?count=1";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
+    void getRecentProducts() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = Constants.GET_PRODUCTS_URL ;
+        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
-                JSONObject jsonObject = new JSONObject(response);
-                if(jsonObject.getString("status").equals("success")){
-                    JSONArray array = jsonObject.getJSONArray("products");
-                    for(int i=0;i<array.length();i++){
-                        JSONObject object = array.getJSONObject(i);
-
-                        Product product = new Product(object.getString("name"),
-                       Constants.PRODUCTS_IMAGE_URL+         object.getString("image"),
-                                object.getString("status"),
-                                object.getDouble("price"),
-                                object.getDouble("price_discount"),
-                                object.getInt("stock"),
-                                object.getInt(" id")
-                                );
+                JSONObject object = new JSONObject(response);
+                if(object.getString("status").equals("success")){
+                    JSONArray productsArray = object.getJSONArray("products");
+                    for(int i =0; i< productsArray.length(); i++) {
+                        JSONObject childObj = productsArray.getJSONObject(i);
+                        Product product = new Product(
+                                childObj.getString("name"),
+                                Constants.PRODUCTS_IMAGE_URL + childObj.getString("image"),
+                                childObj.getString("status"),
+                                childObj.getDouble("price"),
+                                childObj.getDouble("price_discount"),
+                                childObj.getInt("stock"),
+                                childObj.getInt("id")
+                        );
                         products.add(product);
                     }
                     productAdapter.notifyDataSetChanged();
-                }else{
-
                 }
             } catch (JSONException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
-
-        }, error -> {
-        });
-           requestQueue.add(stringRequest);
-    }
-    void initproducts(){
-        products = new ArrayList<>();
-        productAdapter = new ProductAdapter(this,products);
-        products.add(new Product("Smart Watch","https://tutorials.mianasad.com/ecommerce/uploads/product/1689300402128.jpg","READY STOCK",2400,0,10,1));
-        products.add(new Product("T-Shirt","https://tutorials.mianasad.com/ecommerce/uploads/product/1689314343600.png","READY STOCK",
-                100,1,100,2));
-       // getRecentProducts();
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
-        binding.productlist.setAdapter(productAdapter);
-        binding.productlist.setLayoutManager(layoutManager);
+        }, error -> { });
+        queue.add(request);
     }
     void getRecentOffer(){
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -153,12 +144,10 @@ queue.add(stringRequest);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
 queue.add(request);

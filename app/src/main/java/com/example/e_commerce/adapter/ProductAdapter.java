@@ -45,7 +45,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 it.putExtra("price",product.getPrice());
                 it.putExtra("id",product.getId());
                 context.startActivity(it);
-
             }
         });
     }
