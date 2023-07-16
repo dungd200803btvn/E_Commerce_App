@@ -2,6 +2,7 @@ package com.example.e_commerce.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +16,7 @@ import com.example.e_commerce.databinding.ActivityMainBinding;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
 import com.example.e_commerce.utils.Constants;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONArray;
@@ -34,6 +36,24 @@ ArrayList<Product> products;
         super.onCreate(savedInstanceState);
         binding =  ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                Intent it = new Intent(MainActivity.this, SearchActivity.class);
+                it.putExtra("query",text.toString());
+                startActivity(it);
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+            }
+        });
         initcategories();
         initproducts();
         initslider();
@@ -42,9 +62,6 @@ ArrayList<Product> products;
     void initproducts(){
         products = new ArrayList<>();
         productAdapter = new ProductAdapter(this,products);
-        // products.add(new Product("Smart Watch","https://tutorials.mianasad.com/ecommerce/uploads/product/1689300402128.jpg","READY STOCK",2400,0,10,1));
-        //  products.add(new Product("T-Shirt","https://www.pngegg.com/en/png-zqqft","READY STOCK",
-        //    100,1,100,2));
         getRecentProducts();
         GridLayoutManager layoutManager = new GridLayoutManager(this,2);
         binding.productlist.setLayoutManager(layoutManager);

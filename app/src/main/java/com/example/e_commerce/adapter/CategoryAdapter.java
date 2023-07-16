@@ -1,6 +1,7 @@
 package com.example.e_commerce.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.e_commerce.R;
+import com.example.e_commerce.activity.CategoryActivity;
 import com.example.e_commerce.databinding.ItemCategoriesBinding;
 import com.example.e_commerce.model.Category;
 
@@ -37,6 +39,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
       holder.binding.productDescription.setText(Html.fromHtml(category.getName()));
         Glide.with(context).load(category.getIcon()).into(holder.binding.productImage);
         holder.binding.productImage.setBackgroundColor(Color.parseColor(category.getColor()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(context, CategoryActivity.class);
+                it.putExtra("catId",category.getId());
+                it.putExtra("categoryName",category.getName());
+                context.startActivity(it);
+            }
+        });
 
     }
 
