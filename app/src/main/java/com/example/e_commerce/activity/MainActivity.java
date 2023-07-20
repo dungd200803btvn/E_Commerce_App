@@ -13,9 +13,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.e_commerce.adapter.CategoryAdapter;
 import com.example.e_commerce.adapter.ProductAdapter;
 import com.example.e_commerce.databinding.ActivityMainBinding;
+import com.example.e_commerce.login.LoginActivity;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
 import com.example.e_commerce.utils.Constants;
+
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 ActivityMainBinding binding;
+
 CategoryAdapter categoryAdapter;
 ProductAdapter productAdapter;
 ArrayList<Category> categories;
@@ -34,6 +37,7 @@ ArrayList<Product> products;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding =  ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {

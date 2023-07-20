@@ -19,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.e_commerce.adapter.CartAdapter;
 import com.example.e_commerce.databinding.ActivityCheckoutBinding;
@@ -52,12 +51,9 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCheckoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        // process dialog
-        ProgressBar progressBar = new ProgressBar(this);
-        progressBar.setIndeterminate(true);
-        progressDialog.setContentView(progressBar);
-
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Processing...");
         products = new ArrayList<>();
 
         cart = TinyCartHelper.getCart();
@@ -186,4 +182,9 @@ public class CheckoutActivity extends AppCompatActivity {
 requestQueue.add(jsonObjectRequest);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

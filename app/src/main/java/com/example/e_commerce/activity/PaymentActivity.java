@@ -18,13 +18,6 @@ ActivityPaymentBinding binding;
         String orderCode = getIntent().getStringExtra("orderCode");
         binding.webview.setMixedContentAllowed(true);
         binding.webview.loadUrl(Constants.PAYMENT_URL+orderCode);
-
-
-
-
-
-
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
