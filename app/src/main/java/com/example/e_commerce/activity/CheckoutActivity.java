@@ -143,8 +143,12 @@ public class CheckoutActivity extends AppCompatActivity {
                                 .setPositiveButton("Pay now", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent it = new Intent(CheckoutActivity.this, PaymentActivity.class);
+                                        Intent it = new Intent(CheckoutActivity.this, PaymentRazoPay.class);
                                         it.putExtra("orderCode",order_number);
+                                        String total = String.valueOf(totalcost);
+                                        it.putExtra("totalcost",total);
+                                        it.putExtra("amount",totalcost);
+                                        it.putExtra("name",binding.nameBox.getText().toString());
                                         startActivity(it);
                                     }
                                 }).show();

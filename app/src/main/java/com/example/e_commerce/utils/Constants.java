@@ -13,4 +13,6 @@ public class Constants {
     public static String CATEGORIES_IMAGE_URL = API_BASE_URL + "/uploads/category/";
     public static String PRODUCTS_IMAGE_URL = API_BASE_URL + "/uploads/product/";
 
+
+
 }

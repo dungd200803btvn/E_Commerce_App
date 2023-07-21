@@ -16,16 +16,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.PaymentRazoPay"
+            android:exported="false"
+            android:theme="@style/Theme.ECommerce.DarkActionBar"
+            android:label="Payment"/>
+        <activity
             android:name=".login.ForgotPassActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".login.RegisterActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
@@ -35,7 +36,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.SearchActivity"
@@ -58,7 +58,7 @@
         <activity
             android:name=".activity.CartActivity"
             android:exported="false"
-            android:label="Shoping Cart"
+            android:label="ShopingCart"
             android:theme="@style/Theme.ECommerce.DarkActionBar" />
         <activity
             android:name=".activity.ProductDetailActivity"
@@ -66,9 +66,7 @@
             android:theme="@style/Theme.ECommerce.DarkActionBar" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"/>
 
         <meta-data
             android:name="preloaded_fonts"
