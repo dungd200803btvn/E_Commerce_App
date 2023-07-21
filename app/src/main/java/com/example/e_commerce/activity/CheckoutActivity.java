@@ -66,7 +66,7 @@ public class CheckoutActivity extends AppCompatActivity {
         cartAdapter = new CartAdapter(this, products, new CartAdapter.CartListener() {
             @Override
             public void onQuantityChanged() {
-                binding.subtotal.setText(String.format("PKR : %.2f", cart.getTotalPrice()));
+                binding.subtotal.setText(String.format("$ : %.2f", cart.getTotalPrice()));
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -75,9 +75,9 @@ public class CheckoutActivity extends AppCompatActivity {
         binding.cartList.setLayoutManager(layoutManager);
         binding.cartList.addItemDecoration(itemDecoration);
         binding.cartList.setAdapter(cartAdapter);
-        binding.subtotal.setText(String.format("PKR : %.2f", cart.getTotalPrice()));
+        binding.subtotal.setText(String.format("$ : %.2f", cart.getTotalPrice()));
         totalcost = cart.getTotalPrice().doubleValue() + (cart.getTotalPrice().doubleValue() * tax / 100);
-        binding.total.setText(String.format("PKR %.2f", totalcost));
+        binding.total.setText(String.format("$ %.2f", totalcost));
         binding.checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

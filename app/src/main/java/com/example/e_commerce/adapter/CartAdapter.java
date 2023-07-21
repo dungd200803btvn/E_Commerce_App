@@ -27,6 +27,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     Cart cart;
     public interface CartListener{
         public void onQuantityChanged();
+
     }
     public CartAdapter(Context context,ArrayList<Product> products,CartListener cartListener){
         this.context = context;
@@ -43,9 +44,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
     Product product = products.get(position);
+    int number = position;
         Glide.with(context).load(product.getImage()).into(holder.binding.imageItemcart);
         holder.binding.nameProductCart.setText(product.getName());
-        holder.binding.priceCart.setText("PKR "+product.getPrice());
+        holder.binding.priceCart.setText("$ "+product.getPrice());
         holder.binding.quantityCartItem.setText(product.getQuantity()+ "item(s)");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             cart.updateItem(product,product.getQuantity());
                             cartListener.onQuantityChanged();
                         }
+                    }
+                });
+                quantityDialogBindingbinding.btnRemove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        cart.removeItem(product);
+                        products.remove(product);
+                        notifyItemRemoved(number);
+                        cartListener.onQuantityChanged();
                     }
                 });
                 quantityDialogBindingbinding.plusBtn.setOnClickListener(new View.OnClickListener() {

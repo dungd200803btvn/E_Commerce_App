@@ -39,7 +39,7 @@ ArrayList<Product> products;
         cartAdapter =  new CartAdapter(this, products, new CartAdapter.CartListener() {
             @Override
             public void onQuantityChanged() {
-                binding.subtotal.setText(String.format("PKR : %.2f",cart.getTotalPrice()));
+                binding.subtotal.setText(String.format("$ : %.2f",cart.getTotalPrice()));
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -48,7 +48,7 @@ ArrayList<Product> products;
         binding.cartlist.setLayoutManager(layoutManager);
         binding.cartlist.addItemDecoration(itemDecoration);
         binding.cartlist.setAdapter(cartAdapter);
-        binding.subtotal.setText(String.format("PKR : %.2f",cart.getTotalPrice()));
+        binding.subtotal.setText(String.format("$ : %.2f",cart.getTotalPrice()));
         // add continue button handler
         binding.continuebtn.setOnClickListener(new View.OnClickListener() {
             @Override

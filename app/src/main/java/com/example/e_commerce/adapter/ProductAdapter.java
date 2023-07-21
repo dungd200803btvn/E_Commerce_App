@@ -35,7 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Product product = products.get(position);
         Glide.with(context).load(product.getImage()).into(holder.binding.image);
         holder.binding.label.setText(product.getName());
-        holder.binding.price.setText("PKR "+product.getPrice());
+        holder.binding.price.setText("$ "+product.getPrice());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
