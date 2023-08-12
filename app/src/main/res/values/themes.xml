@@ -26,4 +26,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/silde_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+    </style>
 </resources>

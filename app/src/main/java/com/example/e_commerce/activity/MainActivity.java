@@ -1,31 +1,28 @@
 package com.example.e_commerce.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.e_commerce.R;
 import com.example.e_commerce.adapter.CategoryAdapter;
 import com.example.e_commerce.adapter.ProductAdapter;
 import com.example.e_commerce.databinding.ActivityMainBinding;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
 import com.example.e_commerce.utils.Constants;
-
 import com.mancj.materialsearchbar.MaterialSearchBar;
-
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 ActivityMainBinding binding;
 
@@ -37,30 +34,55 @@ ArrayList<Product> products;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         binding =  ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.searchBar.setHint("Search");
+        binding.searchBar.setSpeechMode(true);
+
         binding.searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
             public void onSearchStateChanged(boolean enabled) {
-
+                String s = enabled ? "enabled" : "disabled";
+                Toast.makeText(MainActivity.this, "Search " + s, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onSearchConfirmed(CharSequence text) {
                 Intent it = new Intent(MainActivity.this, SearchActivity.class);
                 it.putExtra("query",text.toString());
                 startActivity(it);
             }
-
             @Override
             public void onButtonClicked(int buttonCode) {
 
-            }
+                }
         });
         initcategories();
         initproducts();
         initslider();
-
+        binding.bottomNavigation.setSelectedItemId(R.id.bottom_home);
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            if(item.getItemId() ==R.id.bottom_home ){
+                return true;
+            }else if(item.getItemId()==R.id.bottom_cart){
+                startActivity(new Intent(MainActivity.this, CartActivity.class));
+                overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
+                return true;
+            }
+            else if(item.getItemId()==R.id.bottom_settings){
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
+                return true;
+            }
+            else if(item.getItemId()==R.id.bottom_profile){
+                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
     }
     void initproducts(){
         products = new ArrayList<>();
@@ -102,8 +124,6 @@ ArrayList<Product> products;
                             categories.add(category);
                         }
                             categoryAdapter.notifyDataSetChanged();
-                    }else{
-
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
