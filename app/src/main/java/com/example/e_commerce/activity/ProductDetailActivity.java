@@ -38,6 +38,7 @@ Product currentproduct;
         String name = getIntent().getStringExtra("name");
         String image = getIntent().getStringExtra("image");
         double price = getIntent().getDoubleExtra("price",0);
+        binding.productPrice.setText("Price:"+price+"$");
         int id = getIntent().getIntExtra("id",0);
         Glide.with(this).load(image).into(binding.productImage);
        getProductDetails(id);

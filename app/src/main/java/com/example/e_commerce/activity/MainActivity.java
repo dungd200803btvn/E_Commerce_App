@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.e_commerce.R;
 import com.example.e_commerce.adapter.CategoryAdapter;
 import com.example.e_commerce.adapter.ProductAdapter;
+import com.example.e_commerce.chatbot.MainActivityChatbot;
 import com.example.e_commerce.databinding.ActivityMainBinding;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
@@ -38,7 +39,7 @@ ArrayList<Product> products;
         binding =  ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.searchBar.setHint("Search");
-        binding.searchBar.setSpeechMode(true);
+        binding.searchBar.setSpeechMode(false);
 
         binding.searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
@@ -70,7 +71,7 @@ ArrayList<Product> products;
                 return true;
             }
             else if(item.getItemId()==R.id.bottom_settings){
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                startActivity(new Intent(MainActivity.this, MainActivityChatbot.class));
                 overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
                 return true;
             }
