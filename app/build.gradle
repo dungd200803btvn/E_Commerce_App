@@ -37,7 +37,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation fileTree(dir: 'C:\\Users\\Dungpc\\Desktop\\ZALO PAY', include: ['*.aar', '*.jar'], exclude: [])
+
+    //firebase
+    implementation 'com.google.firebase:firebase-auth:22.1.1'
+    implementation 'com.google.firebase:firebase-database:20.2.2'
+    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation("com.google.firebase:firebase-auth")
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
+    implementation 'com.google.android.gms:play-services-identity:18.0.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -66,11 +75,9 @@ dependencies {
 
 
 // zalo pay
+    implementation fileTree(dir: 'C:\\Users\\Dungpc\\Desktop\\ZALO PAY', include: ['*.aar', '*.jar'], exclude: [])
     implementation("com.squareup.okhttp3:okhttp:4.6.0")
     implementation("commons-codec:commons-codec:1.14")
-// google firebase
-    implementation platform('com.google.firebase:firebase-bom:32.2.0')
-    implementation 'com.google.firebase:firebase-analytics'
 
     // chat bot
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

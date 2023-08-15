@@ -1,4 +1,4 @@
-package com.example.e_commerce.chatbot;
+package com.example.e_commerce.model;
 
 public class MsgModel {
     private String cnt;

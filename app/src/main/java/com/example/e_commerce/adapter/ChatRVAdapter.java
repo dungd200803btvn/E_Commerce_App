@@ -1,4 +1,4 @@
-package com.example.e_commerce.chatbot;
+package com.example.e_commerce.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.model.ChatModel;
 
 import java.util.ArrayList;
 

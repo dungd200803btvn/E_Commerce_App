@@ -17,6 +17,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".whatapp_chat.SignInActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".whatapp_chat.SignUpActivity_ChatApp"
+            android:exported="false" />
+        <activity
+            android:name=".whatapp_chat.ChatAppMainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ECommerce.DarkActionBar"/>
+        <activity
             android:name=".chatbot.MainActivityChatbot"
             android:exported="false" />
         <activity
@@ -41,11 +57,7 @@
             android:name=".login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SearchActivity"
