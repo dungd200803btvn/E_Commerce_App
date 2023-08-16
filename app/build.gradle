@@ -47,6 +47,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation 'com.google.android.gms:play-services-auth:20.6.0'
     implementation 'com.google.android.gms:play-services-identity:18.0.1'
+    implementation 'com.google.firebase:firebase-storage:20.2.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -82,5 +83,9 @@ dependencies {
     // chat bot
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    // circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
    
 }

@@ -1,4 +1,4 @@
-package com.example.e_commerce.whatapp_chat;
+package com.example.e_commerce.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivitySignUpChatAppBinding;
 import com.example.e_commerce.model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;

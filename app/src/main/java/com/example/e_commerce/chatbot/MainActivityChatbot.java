@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.e_commerce.adapter.ChatRVAdapter;
 import com.example.e_commerce.databinding.ActivityMainChatbotBinding;
 import com.example.e_commerce.model.ChatModel;
 import com.example.e_commerce.model.MsgModel;

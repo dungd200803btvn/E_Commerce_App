@@ -1,4 +1,4 @@
-package com.example.e_commerce.adapter;
+package com.example.e_commerce.chatbot;
 
 import android.content.Context;
 import android.view.LayoutInflater;

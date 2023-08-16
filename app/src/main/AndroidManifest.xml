@@ -17,8 +17,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".whatapp_chat.SignInActivity"
-            android:exported="true" >
+            android:name=".whatapp_chat.GroupChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".whatapp_chat.ChatDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.SignInActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,12 +32,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".whatapp_chat.SignUpActivity_ChatApp"
+            android:name=".login.SignUpActivity_ChatApp"
             android:exported="false" />
         <activity
             android:name=".whatapp_chat.ChatAppMainActivity"
             android:exported="false"
-            android:theme="@style/Theme.ECommerce.DarkActionBar"/>
+            android:theme="@style/Theme.ECommerce.DarkActionBar" />
         <activity
             android:name=".chatbot.MainActivityChatbot"
             android:exported="false" />
@@ -56,9 +62,7 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".activity.SearchActivity"
             android:exported="false"

@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.e_commerce.R;
+import com.example.e_commerce.activity.SettingsActivity;
+import com.example.e_commerce.Fragment.FragmentAdapter;
 import com.example.e_commerce.databinding.ActivityChatAppMainBinding;
+import com.example.e_commerce.login.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ChatAppMainActivity extends AppCompatActivity {
@@ -23,6 +25,8 @@ FirebaseAuth mAuth;
         binding = ActivityChatAppMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
+        binding.viewPage.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
+        binding.tabLayout.setupWithViewPager(binding.viewPage);
 
     }
 
@@ -36,10 +40,12 @@ FirebaseAuth mAuth;
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()== R.id.idsettings){
-            Toast.makeText(ChatAppMainActivity.this,"Setting is clicked",Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(ChatAppMainActivity.this, SettingsActivity.class);
+            startActivity(it);
 
         }else if(item.getItemId()== R.id.idgroupchat){
-            Toast.makeText(ChatAppMainActivity.this,"Group chat is started",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ChatAppMainActivity.this, GroupChatActivity.class);
+            startActivity(intent);
 
         }else if(item.getItemId()== R.id.idlogout){
             mAuth.signOut();

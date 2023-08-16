@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/w1"
     android:gravity="center"
-    tools:context=".whatapp_chat.SignUpActivity_ChatApp">
+    tools:context=".login.SignUpActivity_ChatApp">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -83,9 +83,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnGoogle"
-            android:text="Google"
+            android:text="Sign in with Google"
             android:textAllCaps="false"
             android:drawableLeft="@drawable/ic_google"
+            android:drawablePadding="5dp"
             android:backgroundTint="@color/white"
             android:layout_marginEnd="4dp"
             android:layout_marginRight="4dp"
@@ -94,20 +95,7 @@
             android:textColor="@color/black"
             app:cornerRadius ="8dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnFacebook"
-            android:text="FaceBook"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/ic_facebook"
-            android:backgroundTint="@color/fb_color"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_weight="1"
-            android:padding="15dp"
-            android:textColor="@color/black"
-            app:cornerRadius ="8dp"/>
+
 
     </LinearLayout>
         <TextView

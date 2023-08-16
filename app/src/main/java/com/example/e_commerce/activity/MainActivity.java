@@ -18,8 +18,7 @@ import com.example.e_commerce.databinding.ActivityMainBinding;
 import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
 import com.example.e_commerce.utils.Constants;
-import com.example.e_commerce.whatapp_chat.SignInActivity;
-import com.example.e_commerce.whatapp_chat.SignUpActivity_ChatApp;
+import com.example.e_commerce.whatapp_chat.ChatAppMainActivity;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONArray;
@@ -78,7 +77,7 @@ ArrayList<Product> products;
                 return true;
             }
             else if(item.getItemId()==R.id.bottom_profile){
-                        startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                        startActivity(new Intent(MainActivity.this, ChatAppMainActivity.class));
                 overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
                 return true;
             }

@@ -1,32 +1,24 @@
-package com.example.e_commerce.whatapp_chat;
-import static android.content.ContentValues.TAG;
+package com.example.e_commerce.login;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.example.e_commerce.R;
-import com.example.e_commerce.databinding.ActivitySignInBinding;
+import com.example.e_commerce.activity.MainActivity;
 import com.example.e_commerce.model.Users;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -93,7 +85,7 @@ ActivitySignInBinding binding;
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
                             if(task.isSuccessful()){
-                                Intent it = new Intent(SignInActivity.this, ChatAppMainActivity.class);
+                                Intent it = new Intent(SignInActivity.this, MainActivity.class);
                                 startActivity(it);
                             }else{
                                 Toast.makeText(SignInActivity.this,task.getException().toString(),Toast.LENGTH_SHORT).show();
@@ -148,7 +140,7 @@ ActivitySignInBinding binding;
                         users.setUsername(user.getDisplayName());
                         users.setImage(user.getPhotoUrl().toString());
                         database.getReference().child("Users").child(user.getUid()).setValue(users);
-                        Intent it = new Intent(SignInActivity.this, ChatAppMainActivity.class);
+                        Intent it = new Intent(SignInActivity.this, MainActivity.class);
                         startActivity(it);
                         Toast.makeText(SignInActivity.this,"Login with Google Successful",Toast.LENGTH_SHORT).show();
                     }else{
