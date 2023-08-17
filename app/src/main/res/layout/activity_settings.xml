@@ -87,6 +87,74 @@
                 android:textColor="@color/white"
                 android:textColorHint="#FFCCCC"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Sex"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/txtsex"
+                android:hint="Male"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHint="#FFCCCC"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Date of birth"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/txtdate"
+                android:hint="20/08/2003"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHint="#FFCCCC"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Phone number"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/txtphone"
+                android:hint="0335620803"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="#FFCCCC"/>
+        </LinearLayout>
+
+
         <androidx.appcompat.widget.AppCompatButton
              android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,16 +180,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2"
+            android:id="@+id/logout"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:drawableLeft="@drawable/privacy"
-            android:drawablePadding="21dp"
+        android:drawableLeft="@drawable/privacy"
             android:padding="10dp"
-            android:text="Privacy Policy"
+         android:gravity="center"
+            android:text="Log out"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="28sp"/>
+    <!--
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,7 +242,7 @@
             android:text="Help"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"/> -->
 
     </LinearLayout>
 

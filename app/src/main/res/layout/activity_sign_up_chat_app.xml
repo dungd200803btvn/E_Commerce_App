@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/w1"
+    android:background="@drawable/w2"
     android:gravity="center"
     tools:context=".login.SignUpActivity_ChatApp">
 <LinearLayout
@@ -18,7 +18,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageView_whatapp"
-        android:src="@drawable/ic_whatsapp"/>
+        android:src="@drawable/ecommerce"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="48dp"

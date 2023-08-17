@@ -30,7 +30,7 @@ FirebaseAuth mAuth;
 
     }
 
-    @Override
+ /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_chatapp,menu);
@@ -53,5 +53,5 @@ FirebaseAuth mAuth;
             startActivity(it);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

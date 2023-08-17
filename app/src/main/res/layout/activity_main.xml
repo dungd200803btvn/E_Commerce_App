@@ -12,20 +12,27 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@color/orange"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/searchBar"
             style="@style/MaterialSearchBarLight"
-            app:mt_speechMode="true"
-           app:mt_placeholder="ecommerce"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             app:mt_hint="search your favourite products"
-            app:mt_navIconEnabled="true"
             app:mt_maxSuggestionsCount="10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchBar"/>
+            app:mt_navIconEnabled="true"
+            app:mt_placeholder="ecommerce"
+            app:mt_speechMode="false" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/cart_icon"
+            android:src="@drawable/baseline_shopping_cart_checkout_24"/>
     </LinearLayout>
 
 

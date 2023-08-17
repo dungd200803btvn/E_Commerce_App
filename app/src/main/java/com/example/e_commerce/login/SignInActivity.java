@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.e_commerce.R;
 import com.example.e_commerce.activity.MainActivity;
+import com.example.e_commerce.databinding.ActivitySignInBinding;
 import com.example.e_commerce.model.Users;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.SignInClient;
@@ -110,6 +111,7 @@ ActivitySignInBinding binding;
             @Override
             public void onClick(View v) {
                 Intent signInIntent = mgooglesigninclient.getSignInIntent();
+                progressDialog.show();
                 startActivityForResult(signInIntent, REQ_ONE_TAP);
             }
         });
@@ -140,6 +142,7 @@ ActivitySignInBinding binding;
                         users.setUsername(user.getDisplayName());
                         users.setImage(user.getPhotoUrl().toString());
                         database.getReference().child("Users").child(user.getUid()).setValue(users);
+                        progressDialog.dismiss();
                         Intent it = new Intent(SignInActivity.this, MainActivity.class);
                         startActivity(it);
                         Toast.makeText(SignInActivity.this,"Login with Google Successful",Toast.LENGTH_SHORT).show();

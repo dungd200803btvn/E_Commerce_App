@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/w1"
+    android:background="@drawable/w4"
     tools:context=".login.SignInActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
 <ImageView
     android:layout_width="100dp"
     android:layout_height="100dp"
-    android:src="@drawable/ic_whatsapp"
+    android:src="@drawable/ecommerce"
     android:id="@+id/imageView"/>
         <EditText
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:id="@+id/txtClickSignup"
             android:text="Click to Signup"
             android:layout_gravity="right"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="right"
             android:textSize="18sp"
@@ -93,7 +93,7 @@
             android:id="@+id/txtSignupPhone"
             android:layout_marginTop="15dp"
             android:text="Sign In With Phone"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             />
     </LinearLayout>

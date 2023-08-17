@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,6 +20,7 @@ import com.example.e_commerce.model.Category;
 import com.example.e_commerce.model.Product;
 import com.example.e_commerce.utils.Constants;
 import com.example.e_commerce.whatapp_chat.ChatAppMainActivity;
+import com.example.e_commerce.whatapp_chat.ChatMain2;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONArray;
@@ -62,22 +64,29 @@ ArrayList<Product> products;
         initcategories();
         initproducts();
         initslider();
+        binding.cartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(it);
+            }
+        });
         binding.bottomNavigation.setSelectedItemId(R.id.bottom_home);
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             if(item.getItemId() ==R.id.bottom_home ){
                 return true;
-            }else if(item.getItemId()==R.id.bottom_cart){
-                startActivity(new Intent(MainActivity.this, CartActivity.class));
+            }else if(item.getItemId()==R.id.bottom_chat){
+                startActivity(new Intent(MainActivity.this, ChatMain2.class));
                 overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
                 return true;
             }
-            else if(item.getItemId()==R.id.bottom_settings){
+            else if(item.getItemId()==R.id.bottom_chatbot){
                 startActivity(new Intent(MainActivity.this, MainActivityChatbot.class));
                 overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
                 return true;
             }
             else if(item.getItemId()==R.id.bottom_profile){
-                        startActivity(new Intent(MainActivity.this, ChatAppMainActivity.class));
+                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 overridePendingTransition(R.anim.silde_in_right, R.anim.slide_out_left);
                 return true;
             }

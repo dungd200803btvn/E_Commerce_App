@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.example.e_commerce.R;
 import com.example.e_commerce.databinding.ActivitySettingsBinding;
+import com.example.e_commerce.login.SignInActivity;
 import com.example.e_commerce.model.Users;
-import com.example.e_commerce.whatapp_chat.ChatAppMainActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -42,19 +42,26 @@ FirebaseStorage storage;
         binding.backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(SettingsActivity.this, ChatAppMainActivity.class);
+                Intent it = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(it);
             }
         });
         binding.savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(!binding.txtUsername.getText().toString().equals("") && !binding.txtabout.getText().toString().equals("")){
+               if(!binding.txtUsername.getText().toString().equals("") && !binding.txtabout.getText().toString().equals("")
+               && !binding.txtsex.getText().toString().equals("") && !binding.txtdate.getText().toString().equals("") && !binding.txtphone.getText().toString().equals("")){
                    String username = binding.txtUsername.getText().toString();
                    String status = binding.txtabout.getText().toString();
+                   String sex = binding.txtsex.getText().toString();
+                   String dateofbirth = binding.txtdate.getText().toString();
+                   String phonenumber = binding.txtphone.getText().toString();
                    HashMap<String, Object> objectsHashMap = new HashMap<>();
                    objectsHashMap.put("username",username);
                    objectsHashMap.put("status",status);
+                   objectsHashMap.put("sex",sex);
+                   objectsHashMap.put("dateofbirth",dateofbirth);
+                   objectsHashMap.put("phonenumber",phonenumber);
                    database.getReference().child("Users").child(Objects.requireNonNull(firebaseAuth.getUid())).updateChildren(objectsHashMap);
                    Toast.makeText(SettingsActivity.this,"Profile updated.",Toast.LENGTH_SHORT).show();
                }else{
@@ -71,6 +78,9 @@ FirebaseStorage storage;
                                         .into(binding.profileImage);
                                 binding.txtUsername.setText(users.getUsername());
                                 binding.txtabout.setText(users.getStatus());
+                                binding.txtsex.setText(users.getSex());
+                                binding.txtdate.setText(users.getDateofbirth());
+                                binding.txtphone.setText(users.getPhonenumber());
                             }
 
                             @Override
@@ -85,6 +95,13 @@ FirebaseStorage storage;
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 startActivityForResult(intent,25);
+            }
+        });
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it1 = new Intent(SettingsActivity.this, SignInActivity.class);
+                startActivity(it1);
             }
         });
     }

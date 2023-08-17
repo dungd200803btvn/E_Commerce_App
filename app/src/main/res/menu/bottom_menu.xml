@@ -5,11 +5,11 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/bottom_cart"
-        android:icon="@drawable/baseline_shopping_cart_checkout_24"
-        android:title="Cart" />
+        android:id="@+id/bottom_chat"
+        android:icon="@drawable/baseline_chat_bubble_outline_24"
+        android:title="Chat with shop" />
     <item
-        android:id="@+id/bottom_settings"
+        android:id="@+id/bottom_chatbot"
         android:icon="@drawable/baseline_chat_24"
         android:title="Chat bot" />
     <item
