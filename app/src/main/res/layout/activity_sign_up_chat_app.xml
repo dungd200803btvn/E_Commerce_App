@@ -30,7 +30,7 @@
         android:textColorHint="@color/chatbackground"
         android:inputType="textPersonName"
         android:padding="9dp"
-        android:textColor="@color/lightGrey"/>
+        android:textColor="@color/black"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -41,7 +41,7 @@
         android:textColorHint="@color/chatbackground"
         android:inputType="textEmailAddress"
         android:padding="9dp"
-        android:textColor="@color/lightGrey"/>
+        android:textColor="@color/black"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -52,14 +52,14 @@
         android:textColorHint="@color/chatbackground"
         android:inputType="textPassword"
         android:padding="9dp"
-        android:textColor="@color/lightGrey"/>
+        android:textColor="@color/black"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtHaveAccount"
         android:text="Already Have Account?"
         android:layout_gravity="right"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:gravity="right"
         android:padding="5dp"/>

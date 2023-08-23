@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.example.e_commerce.R;
 import com.example.e_commerce.activity.MainActivity;
+import com.example.e_commerce.activity.MainActivity2;
 import com.example.e_commerce.databinding.ActivitySignInBinding;
 import com.example.e_commerce.model.Users;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -86,7 +87,7 @@ ActivitySignInBinding binding;
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
                             if(task.isSuccessful()){
-                                Intent it = new Intent(SignInActivity.this, MainActivity.class);
+                                Intent it = new Intent(SignInActivity.this, MainActivity2.class);
                                 startActivity(it);
                             }else{
                                 Toast.makeText(SignInActivity.this,task.getException().toString(),Toast.LENGTH_SHORT).show();
@@ -143,7 +144,7 @@ ActivitySignInBinding binding;
                         users.setImage(user.getPhotoUrl().toString());
                         database.getReference().child("Users").child(user.getUid()).setValue(users);
                         progressDialog.dismiss();
-                        Intent it = new Intent(SignInActivity.this, MainActivity.class);
+                        Intent it = new Intent(SignInActivity.this, MainActivity2.class);
                         startActivity(it);
                         Toast.makeText(SignInActivity.this,"Login with Google Successful",Toast.LENGTH_SHORT).show();
                     }else{

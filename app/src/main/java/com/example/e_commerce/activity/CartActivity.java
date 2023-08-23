@@ -15,8 +15,10 @@ import com.hishd.tinycart.model.Cart;
 import com.hishd.tinycart.model.Item;
 import com.hishd.tinycart.util.TinyCartHelper;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Map;
+import java.math.BigInteger;
 
 public class CartActivity extends AppCompatActivity {
 ActivityCartBinding binding;
@@ -39,7 +41,10 @@ ArrayList<Product> products;
         cartAdapter =  new CartAdapter(this, products, new CartAdapter.CartListener() {
             @Override
             public void onQuantityChanged() {
-                binding.subtotal.setText(String.format("$ : %.2f",cart.getTotalPrice()));
+                BigInteger price2 = cart.getTotalPrice().toBigInteger();
+                DecimalFormat formatter = new DecimalFormat("#,###");
+                String formattedNumber = formatter.format(price2);
+                binding.subtotal.setText(formattedNumber+ " VND");
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -48,7 +53,11 @@ ArrayList<Product> products;
         binding.cartlist.setLayoutManager(layoutManager);
         binding.cartlist.addItemDecoration(itemDecoration);
         binding.cartlist.setAdapter(cartAdapter);
-        binding.subtotal.setText(String.format("$ : %.2f",cart.getTotalPrice()));
+
+        BigInteger price2 = cart.getTotalPrice().toBigInteger();
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = formatter.format(price2);
+        binding.subtotal.setText(formattedNumber+ " VND");
         // add continue button handler
         binding.continuebtn.setOnClickListener(new View.OnClickListener() {
             @Override

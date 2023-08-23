@@ -12,6 +12,7 @@ public class Constants {
     public static String NEWS_IMAGE_URL = API_BASE_URL + "/uploads/news/";
     public static String CATEGORIES_IMAGE_URL = API_BASE_URL + "/uploads/category/";
     public static String PRODUCTS_IMAGE_URL = API_BASE_URL + "/uploads/product/";
+    public static final String BASE_URL = "http://192.168.1.7/bánhàng/";
 
 
 

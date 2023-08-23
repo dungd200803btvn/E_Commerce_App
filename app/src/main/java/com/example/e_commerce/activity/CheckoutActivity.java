@@ -10,9 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,11 +25,13 @@ import com.example.e_commerce.utils.Constants;
 import com.hishd.tinycart.model.Cart;
 import com.hishd.tinycart.model.Item;
 import com.hishd.tinycart.util.TinyCartHelper;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -39,8 +39,8 @@ import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity {
     ActivityCheckoutBinding binding;
-    double totalcost = 0.0;
-    final int tax = 10;
+    BigDecimal totalcost ;
+    final BigDecimal tax = BigDecimal.valueOf(1.1);
     Cart cart;
     ProgressDialog progressDialog;
     CartAdapter cartAdapter;
@@ -66,7 +66,10 @@ public class CheckoutActivity extends AppCompatActivity {
         cartAdapter = new CartAdapter(this, products, new CartAdapter.CartListener() {
             @Override
             public void onQuantityChanged() {
-                binding.subtotal.setText(String.format("$ : %.2f", cart.getTotalPrice()));
+                BigInteger price2 = cart.getTotalPrice().toBigInteger();
+                DecimalFormat formatter = new DecimalFormat("#,###");
+                String formattedNumber = formatter.format(price2);
+                binding.subtotal.setText(formattedNumber+ " VND");
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -75,13 +78,29 @@ public class CheckoutActivity extends AppCompatActivity {
         binding.cartList.setLayoutManager(layoutManager);
         binding.cartList.addItemDecoration(itemDecoration);
         binding.cartList.setAdapter(cartAdapter);
-        binding.subtotal.setText(String.format("$ : %.2f", cart.getTotalPrice()));
-        totalcost = cart.getTotalPrice().doubleValue() + (cart.getTotalPrice().doubleValue() * tax / 100);
-        binding.total.setText(String.format("$ %.2f", totalcost));
+
+        BigInteger price2 = cart.getTotalPrice().toBigInteger();
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = formatter.format(price2);
+        binding.subtotal.setText(formattedNumber+ " VND");
+
+       BigDecimal price3 = new BigDecimal(price2);
+        totalcost = price3.multiply(tax);
+        BigInteger totalcost2 = totalcost.toBigInteger();
+        DecimalFormat formatter2 = new DecimalFormat("#,###");
+        String formattedNumber2 = formatter2.format(totalcost2);
+        binding.total.setText(formattedNumber2+ " VND");
         binding.checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                processOrder();
+                //processOrder();
+                Intent it = new Intent(CheckoutActivity.this, PaymentRazoPay.class);
+               // it.putExtra("orderCode",order_number);
+
+                it.putExtra("totalcost",formattedNumber2);
+                it.putExtra("amount",totalcost);
+                it.putExtra("name",binding.nameBox.getText().toString());
+                startActivity(it);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

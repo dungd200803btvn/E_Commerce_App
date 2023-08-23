@@ -10,6 +10,12 @@ public class Category {
         this.brief = brief;
         this.id = id;
     }
+
+    public Category(String name, String icon) {
+        this.name = name;
+        this.icon = icon;
+    }
+
     public String getName() {
         return name;
     }

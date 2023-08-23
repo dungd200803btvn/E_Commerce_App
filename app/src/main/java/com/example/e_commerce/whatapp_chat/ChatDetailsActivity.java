@@ -43,7 +43,7 @@ FirebaseDatabase firebaseDatabase;
         binding.backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(ChatDetailsActivity.this, ChatAppMainActivity.class);
+                Intent it = new Intent(ChatDetailsActivity.this, ChatMain2.class);
                 startActivity(it);
             }
         });

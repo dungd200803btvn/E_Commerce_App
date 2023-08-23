@@ -49,7 +49,8 @@ ActivityPaymentRazoPayBinding binding;
         String name = getIntent().getStringExtra("name");
         binding.code.setText(orderCode);
         binding.name.setText(name);
-        binding.totalAmt.setText("$: "+totalcost);
+
+        binding.totalAmt.setText(totalcost+" VND");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         StrictMode.ThreadPolicy policy = new

@@ -9,7 +9,7 @@ public class Product implements Item, Serializable {
     private String name,image,status;
     private double price,discount;
     private int stock,id;
-    private int quantity;
+    private int quantity,loaicategory;
 
     public Product(String name, String image, String status, double price, double discount, int stock, int id) {
         this.name = name;
@@ -19,6 +19,26 @@ public class Product implements Item, Serializable {
         this.discount = discount;
         this.stock = stock;
         this.id = id;
+    }
+
+    public Product(String name, String image, String status, double price, double discount, int stock, int id, int quantity, int loaicategory) {
+        this.name = name;
+        this.image = image;
+        this.status = status;
+        this.price = price;
+        this.discount = discount;
+        this.stock = stock;
+        this.id = id;
+        this.quantity = quantity;
+        this.loaicategory = loaicategory;
+    }
+
+    public int getLoaicategory() {
+        return loaicategory;
+    }
+
+    public void setLoaicategory(int loaicategory) {
+        this.loaicategory = loaicategory;
     }
 
     public String getName() {

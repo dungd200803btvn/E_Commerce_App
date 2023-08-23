@@ -18,6 +18,7 @@ import com.example.e_commerce.model.Product;
 import com.hishd.tinycart.model.Cart;
 import com.hishd.tinycart.util.TinyCartHelper;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder>{
@@ -47,7 +48,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     int number = position;
         Glide.with(context).load(product.getImage()).into(holder.binding.imageItemcart);
         holder.binding.nameProductCart.setText(product.getName());
-        holder.binding.priceCart.setText("$ "+product.getPrice());
+        int price2 = (int)product.getPrice();
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = formatter.format(price2);
+        holder.binding.priceCart.setText(formattedNumber+" VND");
         holder.binding.quantityCartItem.setText(product.getQuantity()+ "item(s)");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

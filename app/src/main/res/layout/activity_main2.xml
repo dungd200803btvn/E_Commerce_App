@@ -50,25 +50,25 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/linearlayout"
-       >
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp">
-    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-        android:id="@+id/carousel"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:showNavigationButtons="false"
-        app:showCaption="true"
-        app:autoPlay="true"
-        />
-</androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+                <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                    android:id="@+id/carousel"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:showNavigationButtons="false"
+                    app:showCaption="true"
+                    app:autoPlay="true"
+                    />
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -92,9 +92,7 @@
                 android:id="@+id/productlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                >
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginTop="16dp"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -104,9 +102,9 @@
 
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bottom_background"
         android:elevation="5dp"

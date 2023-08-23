@@ -27,9 +27,12 @@ import com.hishd.tinycart.util.TinyCartHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+
 public class ProductDetailActivity extends AppCompatActivity {
 ActivityProductDetailBinding binding;
 Product currentproduct;
+    Product currentproduct2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +40,24 @@ Product currentproduct;
         setContentView(binding.getRoot());
         String name = getIntent().getStringExtra("name");
         String image = getIntent().getStringExtra("image");
+        String status = getIntent().getStringExtra("status");
+        binding.productDescription.setText(status);
+
         double price = getIntent().getDoubleExtra("price",0);
-        binding.productPrice.setText("Price:"+price+"$");
+        double discount = getIntent().getDoubleExtra("discount",0);
         int id = getIntent().getIntExtra("id",0);
+        int stock = getIntent().getIntExtra("stock",0);
+        int quantity = getIntent().getIntExtra("quantity",0);
+        currentproduct2 = new Product(name,image,status,price,discount,stock,id);
+
+        int price2 = (int)price;
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formattedNumber = formatter.format(price2);
+
+        binding.productPrice.setText("Price: "+formattedNumber+" VND");
+
         Glide.with(this).load(image).into(binding.productImage);
-       getProductDetails(id);
+     //  getProductDetails(id);
         getSupportActionBar().setTitle(name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // add to cart button handler
@@ -49,7 +65,8 @@ Product currentproduct;
         binding.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cart.addItem(currentproduct,1);
+               // cart.addItem(currentproduct,1);
+                cart.addItem(currentproduct2,1);
                 binding.addToCartBtn.setEnabled(false);
                 binding.addToCartBtn.setText("Added in cart");
             }
