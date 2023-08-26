@@ -1,3 +1,9 @@
+<div align="center">
+<a href="[Logo App](https://github.com/dungd200803btvn/E_Commerce_App)">
+    <img src="ecommerce_icon.png" alt="Logo" width="380">
+  </a>
+  </div>
+
 # Ecommerce App #
 ## About Project ##
 My project is a Java Android Mobile App about E-commerce likely Shopee,Lazada with many feature:  
