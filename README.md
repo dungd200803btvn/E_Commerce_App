@@ -33,6 +33,25 @@ My project is a Java Android Mobile App about E-commerce likely Shopee,Lazada wi
 - Chat with shop
 - Chat bot
 - Profile
+## My contribute ## 
+1. This is a personal project, I implemented it myself from the stage of ideation, interface design, implementation of functions, testing.
+2. It took me about 2 month: 6/2023 - 8/2023 to complete it
+## Technical highlights ## 
+1. Using Java language and Android libraries is completely self-study knowledge, not taught before in school
+2. Using Restfull API to get product and category data from the server to the mobile app and send customer and order information from the phone to the server for storage, management, and exploitation.
+3. Using Firebase for:
+
+- Authentication User,Signin,Signup,Reset pass
+- Firebase Database to save the user information,realtime database for chat of user and shop
+- Firebase Storage to store and update user image in profile
+- Send email to another test my project by download APK
+4. Integrated chatbot to automatically answer customers' questions and concerns
+5. Integrated chat function likely whatsapp so users can chat with friends or with shop owners
+## Contact ##
+### If you have any questions or want me to send the APK file to download and experience my app, please contact me at ###
+- My gmail address: ledung200803@gmail.com
+- My phone number: 0335620803
+- My Facebook link: https://www.facebook.com/chidung.le.501
 
 
 
