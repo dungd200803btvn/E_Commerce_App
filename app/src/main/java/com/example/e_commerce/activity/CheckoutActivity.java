@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -18,10 +19,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.e_commerce.WebAppadmin.XemdonhangActivity;
 import com.example.e_commerce.adapter.CartAdapter;
 import com.example.e_commerce.databinding.ActivityCheckoutBinding;
 import com.example.e_commerce.model.Product;
+import com.example.e_commerce.retrofit.ApiBanHang;
+import com.example.e_commerce.retrofit.RetrofitClient;
 import com.example.e_commerce.utils.Constants;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hishd.tinycart.model.Cart;
 import com.hishd.tinycart.model.Item;
 import com.hishd.tinycart.util.TinyCartHelper;
@@ -35,7 +41,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
+import io.paperdb.Paper;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CheckoutActivity extends AppCompatActivity {
     ActivityCheckoutBinding binding;
@@ -45,12 +58,20 @@ public class CheckoutActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     CartAdapter cartAdapter;
     ArrayList<Product> products;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    ApiBanHang apiBanHang;
+    String formattedNumber2;
+    BigInteger totalcost2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCheckoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        apiBanHang = RetrofitClient.getInstance(Constants.BASE_URL).create(ApiBanHang.class);
+
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Processing...");
@@ -86,24 +107,74 @@ public class CheckoutActivity extends AppCompatActivity {
 
        BigDecimal price3 = new BigDecimal(price2);
         totalcost = price3.multiply(tax);
-        BigInteger totalcost2 = totalcost.toBigInteger();
+        totalcost2 = totalcost.toBigInteger();
         DecimalFormat formatter2 = new DecimalFormat("#,###");
-        String formattedNumber2 = formatter2.format(totalcost2);
+        formattedNumber2 = formatter2.format(totalcost2);
         binding.total.setText(formattedNumber2+ " VND");
         binding.checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //processOrder();
-                Intent it = new Intent(CheckoutActivity.this, PaymentRazoPay.class);
-               // it.putExtra("orderCode",order_number);
-
-                it.putExtra("totalcost",formattedNumber2);
-                it.putExtra("amount",totalcost);
-                it.putExtra("name",binding.nameBox.getText().toString());
-                startActivity(it);
+                checkout();
+            }
+        });
+        binding.btnXemdonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it1 = new Intent(CheckoutActivity.this, XemdonhangActivity.class);
+                startActivity(it1);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
+    }
+
+    void checkout(){
+        List<Product> product_gio_hang = new ArrayList<>();
+        int sl=0;
+        for (Map.Entry<Item, Integer> item : cart.getAllItemsWithQty().entrySet()) {
+            Product product = (Product) item.getKey();
+            int quantity = item.getValue();
+            product.setQuantity(quantity);
+            sl+= quantity;
+           product_gio_hang.add(product);
+        }
+        if(!binding.phoneBox.getText().toString().isEmpty() && !binding.emailBox.getText().toString().isEmpty() &&
+        !binding.nameBox.getText().toString().isEmpty() && !binding.addressBox.getText().toString().isEmpty()){
+            String sdt = binding.phoneBox.getText().toString();
+            String email = binding.emailBox.getText().toString();
+            String total = totalcost2.toString();
+            String userid = binding.nameBox.getText().toString();
+            Paper.init(this);
+            Paper.book().write("userid",  userid);
+            String address = binding.addressBox.getText().toString();
+            Gson gson = new GsonBuilder().setLenient().create();
+            String json = gson.toJson(product_gio_hang);
+            compositeDisposable.add(apiBanHang.createOrder(sdt,email,total,userid,address,sl,json)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            getSpModel -> {
+                                Toast.makeText(this,"Gui du lieu don hang len server thanh cong!",Toast.LENGTH_SHORT).show();
+
+                            },
+                            throwable -> {
+                                Toast.makeText(this,throwable.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+
+                    ));
+
+            Intent it = new Intent(CheckoutActivity.this, PaymentRazoPay.class);
+            it.putExtra("totalcost",formattedNumber2);
+            it.putExtra("amount",totalcost);
+            it.putExtra("name",binding.nameBox.getText().toString());
+            startActivity(it);
+        }else{
+            Toast.makeText(this,"Enter information!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     void processOrder() {

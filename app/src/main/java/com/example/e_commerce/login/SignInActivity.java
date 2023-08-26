@@ -116,6 +116,13 @@ ActivitySignInBinding binding;
                 startActivityForResult(signInIntent, REQ_ONE_TAP);
             }
         });
+        binding.txtSignupPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(SignInActivity.this, ForgotPassActivity.class);
+                startActivity(it);
+            }
+        });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

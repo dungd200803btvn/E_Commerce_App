@@ -20,6 +20,7 @@ import com.example.e_commerce.retrofit.ApiBanHang;
 import com.example.e_commerce.retrofit.RetrofitClient;
 import com.example.e_commerce.utils.Constants;
 import com.example.e_commerce.whatapp_chat.ChatMain2;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
@@ -39,8 +40,6 @@ CompositeDisposable compositeDisposable = new CompositeDisposable();
     ArrayList<Category> categories2;
     CategoryAdapter categoryAdapter;
     ProductAdapter productAdapter;
-int page=1;
-int loai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +53,24 @@ int loai;
                     startActivity(it);
                 }
             });
+
+        binding.searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+                String s = enabled ? "enabled" : "disabled";
+                Toast.makeText(MainActivity2.this, "Search " + s, Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                Intent it = new Intent(MainActivity2.this, SearchActivity.class);
+                it.putExtra("query",text.toString());
+                startActivity(it);
+            }
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+            }
+        });
 
         binding.bottomNavigation.setSelectedItemId(R.id.bottom_home);
         binding.bottomNavigation.setOnItemSelectedListener(item -> {

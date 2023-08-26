@@ -67,10 +67,12 @@ ActivityPaymentRazoPayBinding binding;
                     CreateOrder orderApi = new CreateOrder();
 
                     double doubleNumber = Double.parseDouble(totalcost);
+                    int total = Integer.parseInt(totalcost);
+                    total = total/1000;
                     int roundedNumber = (int) Math.floor(doubleNumber);
-                    String amount = ""+roundedNumber;
+                    String amount = ""+total;
                     try {
-                        JSONObject data = orderApi.createOrder(amount);
+                        JSONObject data = orderApi.createOrder("100000");
                         String code = data.getString("return_code");
                         Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
                             binding.zptranstoken.setText("zptranstoken");

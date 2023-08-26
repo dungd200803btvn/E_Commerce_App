@@ -280,6 +280,13 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/orange"
                 android:text="Process Checkout" />
+            <Button
+                android:id="@+id/btnXemdonhang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange"
+                android:text="Xem lich su don hang" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

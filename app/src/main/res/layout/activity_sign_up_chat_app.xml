@@ -53,6 +53,16 @@
         android:inputType="textPassword"
         android:padding="9dp"
         android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/txtPhone"
+        android:ems="10"
+        android:hint="Phone number"
+        android:textColorHint="@color/chatbackground"
+        android:inputType="textPersonName"
+        android:padding="9dp"
+        android:textColor="@color/black"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,21 +89,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="25dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnGoogle"
-            android:text="Sign in with Google"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/ic_google"
-            android:drawablePadding="5dp"
-            android:backgroundTint="@color/white"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="1.25"
-            android:padding="15dp"
-            android:textColor="@color/black"
-            app:cornerRadius ="8dp"/>
+
 
 
 
@@ -104,7 +100,7 @@
             android:id="@+id/txtSignupPhone"
             android:layout_marginTop="15dp"
             android:text="Sign Up With Phone"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="19sp"
             />
 

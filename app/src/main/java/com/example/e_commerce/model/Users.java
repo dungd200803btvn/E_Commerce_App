@@ -59,6 +59,12 @@ public class Users {
         this.email = email;
         this.pass = pass;
     }
+    public Users(String username, String email, String pass,String phonenumber) {
+        this.username = username;
+        this.email = email;
+        this.pass = pass;
+        this.phonenumber = phonenumber;
+    }
 
     public String getImage() {
         return image;

@@ -48,7 +48,8 @@ Product currentproduct;
         int id = getIntent().getIntExtra("id",0);
         int stock = getIntent().getIntExtra("stock",0);
         int quantity = getIntent().getIntExtra("quantity",0);
-        currentproduct2 = new Product(name,image,status,price,discount,stock,id);
+        long price1 = (long)price;
+        currentproduct2 = new Product(name,image,status,price1,discount,stock,id);
 
         int price2 = (int)price;
         DecimalFormat formatter = new DecimalFormat("#,###");
@@ -112,7 +113,7 @@ Product currentproduct;
                                 product.getString("name"),
                                 Constants.PRODUCTS_IMAGE_URL + product.getString("image"),
                                 product.getString("status"),
-                                product.getDouble("price"),
+                                product.getLong("price"),
                                 product.getDouble("price_discount"),
                                 product.getInt("stock"),
                                 product.getInt("id")
