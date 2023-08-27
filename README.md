@@ -108,7 +108,7 @@
   <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/home.jpg?raw=true" alt="Login" width="250"/>
 </p>
 
-- Chat with shop
+- Chat with shop or your friends 
  <p align="center">
   <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/chat_1.jpg?raw=true" alt="Login" width="250"/>
       <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/chat_2.jpg?raw=true" alt="Login" width="250"/>
