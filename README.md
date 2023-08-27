@@ -82,7 +82,7 @@
 </p>
 
 <p align="right">(<a href="#readme">back to top</a>)</p>  
-<p align="right">(<a href="#readme">back to top</a>)</p>  
+
 10,Checkout:  
 
 - Show subtotal,tax and totalcost
@@ -99,6 +99,7 @@
   <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/pay1.jpg?raw=true" alt="Image 1" width="200" style="margin-right: 20px;"/>
   <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/pay2.jpg?raw=true" alt="Image 2" width="200"/>
 </p>
+<p align="right">(<a href="#readme">back to top</a>)</p>  
 
 12,Bottom Navigation Bar: include
 
@@ -123,11 +124,13 @@
  <p align="center">
   <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/profile.jpg?raw=true" alt="Login" width="250"/>
 </p>
+
 <p align="right">(<a href="#readme">back to top</a>)</p>  
 
 ## My contribute ## 
 1. This is a personal project, I implemented it myself from the stage of ideation, interface design, implementation of functions, testing.
 2. It took me about 2 month: 6/2023 - 8/2023 to complete it
+   
    <p align="right">(<a href="#readme">back to top</a>)</p>   
    
 ## Technical highlights ## 
@@ -141,7 +144,9 @@
 - Send email to another test my project by download APK
 4. Integrated chatbot to automatically answer customers' questions and concerns
 5. Integrated chat function likely whatsapp so users can chat with friends or with shop owners
+
   <p align="right">(<a href="#readme">back to top</a>)</p>  
+  
 ## Contact ##
 ### If you have any questions or want me to send the APK file to download and experience my app, please contact me at ###
 - My gmail address: ledung200803@gmail.com
