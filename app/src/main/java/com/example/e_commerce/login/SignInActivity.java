@@ -154,12 +154,18 @@ ActivitySignInBinding binding;
                         Intent it = new Intent(SignInActivity.this, MainActivity2.class);
                         startActivity(it);
                         Toast.makeText(SignInActivity.this,"Login with Google Successful",Toast.LENGTH_SHORT).show();
+
                     }else{
 
                     }
                 }
             });
         }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
+}
 
 
