@@ -30,6 +30,13 @@
  
 4, Resetpass  
 
+<p align="center">
+  <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/reset_1.jpg?raw=true" alt="Image 1" width="200" style="margin-right: 20px"/>
+  <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/reset_2.png?raw=true" alt="Image 2" width="500 "/>
+     <img src="https://github.com/dungd200803btvn/E_Commerce_App/blob/master/Screenshot/reset_3.png?raw=true" alt="Image 3" width="500 "/>
+</p>
+
+
 5, Search bar:  
 
 - Quick search by entering the first few letters of the product name will show all products
