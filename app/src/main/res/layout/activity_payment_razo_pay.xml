@@ -106,62 +106,23 @@
         app:layout_constraintStart_toStartOf="@+id/code"
         app:layout_constraintTop_toBottomOf="@+id/code" />
 
-    <Button
-        android:id="@+id/btnCreateOrder"
-        android:layout_width="347dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:background="#2196F3"
-        android:text="Tạo mã thanh toán cho đơn hàng"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider5" />
+
+
 
     <Button
         android:id="@+id/pay_btn"
         android:layout_width="211dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="140dp"
         android:text="Zalo Pay Now"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/zptranstoken"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="24dp"
-        android:text="zptranstoken"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateOrder" />
 
-    <TextView
-        android:id="@+id/txtTranstoken"
-        android:layout_width="244dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="âsafsfasfa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateOrder" />
 
-    <Button
-        android:id="@+id/btnphuongthuckhac"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:text="Phương thức khác"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pay_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -115,6 +115,7 @@ public class CheckoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkout();
+
             }
         });
         binding.btnXemdonhang.setOnClickListener(new View.OnClickListener() {
@@ -166,15 +167,18 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
 
                     ));
-
             Intent it = new Intent(CheckoutActivity.this, PaymentRazoPay.class);
             it.putExtra("totalcost",formattedNumber2);
             it.putExtra("amount",totalcost);
             it.putExtra("name",binding.nameBox.getText().toString());
             startActivity(it);
+
         }else{
             Toast.makeText(this,"Enter information!",Toast.LENGTH_SHORT).show();
         }
+
+
+
     }
 
     void processOrder() {
@@ -273,7 +277,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 return headers;
             }
         };
-requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonObjectRequest);
     }
 
     @Override

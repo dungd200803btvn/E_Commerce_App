@@ -100,8 +100,11 @@ FirebaseStorage storage;
         binding.logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                firebaseAuth.signOut();
                 Intent it1 = new Intent(SettingsActivity.this, SignInActivity.class);
                 startActivity(it1);
+                finish();
+                Toast.makeText(SettingsActivity.this,"Log out successful",Toast.LENGTH_SHORT).show();
             }
         });
     }
